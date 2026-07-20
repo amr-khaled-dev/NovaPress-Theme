@@ -3,7 +3,7 @@
 <?php get_header(); ?>
 
 <main id="primary">
-    <h1>Welcome to Novapress Blog</h1>
+    <h1>Welcome to Novapress Home</h1>
 </main>
 
 <?php get_footer(); ?>
