@@ -1,6 +1,6 @@
 <?php
 
-defined('ABSPATH') || exit('No direct script access allowed');
+defined('ABSPATH') || exit;
 
 // Setup
 require_once __DIR__ . '/constants.php';

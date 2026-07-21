@@ -1,6 +1,5 @@
-<?php defined('ABSPATH') || exit('No direct script access allowed'); ?>
-
 <?php
+defined('ABSPATH') || exit;
 get_template_part('template-parts/layouts/footer');
 wp_footer();
 ?>

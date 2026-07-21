@@ -1,4 +1,4 @@
-<?php defined('ABSPATH') || exit('No direct script access allowed'); ?>
+<?php defined('ABSPATH') || exit; ?>
 
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>

@@ -1,6 +1,6 @@
 <?php
 
-defined('ABSPATH') || exit('No direct script access allowed');
+defined('ABSPATH') || exit;
 
 function novapress_enqueue_assets()
 {
