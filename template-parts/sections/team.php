@@ -1,10 +1,15 @@
-<?php defined('ABSPATH') || exit; ?>
+<?php
+defined('ABSPATH') || exit;
+
+$teamTitle = novapress_get_option('team_title', 'Our Team');
+$teamDesc = novapress_get_option('team_description', 'Meet our talented team of professionals');
+?>
 
 <section class="team" aria-labelledby="teamTitle">
     <div class="container">
         <div class="section-header">
-            <h2 id="teamTitle">Our Team</h2>
-            <p>Meet our talented team of professionals</p>
+            <h2 id="teamTitle"><?php echo esc_html($teamTitle); ?></h2>
+            <p><?php echo esc_html($teamDesc); ?></p>
         </div>
         <div class="team-grid">
             <article class="team-card">

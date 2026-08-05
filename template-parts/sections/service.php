@@ -1,11 +1,15 @@
-<?php defined('ABSPATH') || exit; ?>
+<?php
+defined('ABSPATH') || exit;
+
+$servicesTitle = novapress_get_option('services_title', 'Our Services');
+$servicesDesc = novapress_get_option('services_description', 'We offer a wide range of services to meet your needs.');
+?>
 
 <section class="services" aria-labelledby="servicesTitle">
     <div class="container">
         <div class="section-header">
-            <h2 id="servicesTitle">Our Services</h2>
-            <p>We help businesses build fast, scalable and modern websites
-                with clean code and outstanding user experience.</p>
+            <h2 id="servicesTitle"><?php echo esc_html($servicesTitle); ?></h2>
+            <p><?php echo esc_html($servicesDesc); ?></p>
         </div>
         <div class="services-grid">
             <article class="service-card">

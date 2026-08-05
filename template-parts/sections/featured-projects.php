@@ -1,10 +1,15 @@
-<?php defined('ABSPATH') || exit; ?>
+<?php
+defined('ABSPATH') || exit;
+
+$projectsTitle = novapress_get_option('projects_title', 'Featured Projects');
+$projectsDesc = novapress_get_option('projects_description', 'Check out some of our featured projects');
+?>
 
 <section class="featured-projects" aria-labelledby="projectsTitle">
     <div class="container">
         <div class="section-header">
-            <h2 id="projectsTitle">Featured Projects</h2>
-            <p>Check out some of our featured projects</p>
+            <h2 id="projectsTitle"><?php echo esc_html($projectsTitle); ?></h2>
+            <p><?php echo esc_html($projectsDesc); ?></p>
         </div>
         <div class="projects-grid">
             <article class="project-card">

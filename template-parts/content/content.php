@@ -1,8 +1,9 @@
 <?php defined('ABSPATH') || exit; ?>
 
-<article>
-    <h2><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h2>
-    <?php the_excerpt(); ?>
+<article class="article-card">
+    <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('thumbnail'); ?></a>
+    <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+    <p><?php echo esc_html(get_the_excerpt()); ?></p>
     <div class="post-meta">
         <span class="post-date">
             <?php echo get_the_date(); ?>
@@ -11,5 +12,5 @@
             <?php echo get_the_author(); ?>
         </span>
     </div>
-    <button><a href="<?php the_permalink(); ?>">Read More</a></button>
+    <a href="<?php the_permalink(); ?>">Read More...</a>
 </article>
