@@ -2,6 +2,8 @@
 
 defined('ABSPATH') || exit;
 
+add_action('after_setup_theme', 'novapress_setup_theme');
+
 function novapress_setup_theme()
 {
     add_theme_support('title-tag');
@@ -13,8 +15,3 @@ function novapress_setup_theme()
     add_theme_support('customize-selective-refresh-widgets');
     add_theme_support('align-wide');
 }
-
-add_action(
-    'after_setup_theme',
-    'novapress_setup_theme'
-);

@@ -1,20 +1,6 @@
 <?php
 defined('ABSPATH') || exit;
 
-$icons = array(
-    'rocket' => 'fa-solid fa-rocket',
-    'shield' => 'fa-solid fa-shield-halved',
-    'paint-brush' => 'fa-solid fa-paint-brush',
-    'globe' => 'fa-solid fa-globe',
-    'code' => 'fa-solid fa-code',
-    'bolt' => 'fa-solid fa-bolt',
-    'leaf' => 'fa-solid fa-leaf',
-    'users' => 'fa-solid fa-users',
-    'check' => 'fa-solid fa-circle-check',
-    'gears' => 'fa-solid fa-gears',
-    'heart' => 'fa-solid fa-heart',
-    'star' => 'fa-solid fa-star'
-);
 $featureKey = 'why_choose_feature_';
 $whyChooseTitle = novapress_get_option('why_choose_title', 'Why Choose NovaPress');
 $whyChooseDesc = novapress_get_option('why_choose_description', 'A professional WordPress starter theme built for agencies and business websites.');
@@ -40,7 +26,7 @@ $whyChooseDesc = novapress_get_option('why_choose_description', 'A professional 
             ?>
                 <article class="feature-card">
                     <div class="feature-icon">
-                        <i class="<?php echo esc_attr($icons[$icon]); ?>"></i>
+                        <i class="<?php echo esc_attr(novapress_get_icon($icon)); ?>"></i>
                     </div>
                     <h3><?php echo esc_html($title); ?></h3>
                     <p><?php echo esc_html($desc); ?></p>

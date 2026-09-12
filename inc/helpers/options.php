@@ -1,4 +1,6 @@
 <?php
+defined('ABSPATH') || exit;
+
 function novapress_get_option($key, $default = '')
 {
     $options = get_option('novapress_options', []);

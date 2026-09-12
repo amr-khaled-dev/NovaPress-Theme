@@ -13,15 +13,15 @@ $latestArticlesDesc = novapress_get_option('latest_articles_description', 'Check
         </div>
         <div class="articles-grid">
             <?php
-            $latestArticlesArgs = array(
+            $articlesArgs = array(
                 'post_type'      => 'post',
                 'posts_per_page' => 3
             );
-            $latestArticles = new WP_Query($latestArticlesArgs);
+            $articlesQuery = new WP_Query($articlesArgs);
 
-            if ($latestArticles->have_posts()) :
-                while ($latestArticles->have_posts()) :
-                    $latestArticles->the_post();
+            if ($articlesQuery->have_posts()) :
+                while ($articlesQuery->have_posts()) :
+                    $articlesQuery->the_post();
                     get_template_part('template-parts/content/content');
                 endwhile;
                 wp_reset_postdata();

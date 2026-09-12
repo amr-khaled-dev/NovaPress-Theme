@@ -2,6 +2,8 @@
 
 defined('ABSPATH') || exit;
 
+add_action('init', 'novapress_register_menus');
+
 function novapress_register_menus()
 {
     register_nav_menus(
@@ -11,8 +13,3 @@ function novapress_register_menus()
         )
     );
 }
-
-add_action(
-    'init',
-    'novapress_register_menus'
-);

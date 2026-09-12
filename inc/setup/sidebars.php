@@ -1,6 +1,7 @@
 <?php
-
 defined('ABSPATH') || exit;
+
+add_action('widgets_init', 'novapress_register_sidebars');
 
 function novapress_register_sidebars()
 {
@@ -34,8 +35,3 @@ function novapress_register_sidebars()
         );
     }
 }
-
-add_action(
-    'widgets_init',
-    'novapress_register_sidebars'
-);

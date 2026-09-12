@@ -2,6 +2,8 @@
 
 defined('ABSPATH') || exit;
 
+add_action('admin_menu', 'novapress_add_settings_page');
+
 function novapress_add_settings_page()
 {
     add_theme_page(
@@ -13,11 +15,13 @@ function novapress_add_settings_page()
     );
 }
 
-add_action('admin_menu', 'novapress_add_settings_page');
+add_action('admin_init', 'novapress_settings_init');
 
 function novapress_settings_init()
 {
     register_setting('novapress-settings-group', 'novapress_options');  // register the settings
+    $icons = novapress_get_icons();
+    $icon_labels = array_combine(array_keys($icons), array_column($icons, 'label'));
 
     // Add Hero Section
     add_settings_section(
@@ -174,6 +178,12 @@ function novapress_settings_init()
     );
 
     for ($i = 1; $i <= 6; $i++) {
+        $featureHeading = sprintf(__('Feature %d Settings', 'novapress'), $i);
+        $featureSelectorLabel = sprintf(__('Enable/Disable Feature %d', 'novapress'), $i);
+        $featureIconLabel = sprintf(__('Choose Feature %d Icon', 'novapress'), $i);
+        $featureTitleLabel = sprintf(__('Enter Feature %d Title', 'novapress'), $i);
+        $featureDescriptionLabel = sprintf(__('Enter Feature %d Description', 'novapress'), $i);
+
         add_settings_field(
             'novapress-why-choose-feature-' . $i . '-heading',
             '',
@@ -183,14 +193,14 @@ function novapress_settings_init()
             array(
                 'field'      => 'why_choose_feature_' . $i . '_heading',
                 'class'      => 'novapress-settings-field-heading',
-                'title'      => 'Feature ' . $i . ' Settings',
+                'title'      => $featureHeading,
                 'type'       => 'heading'
             )
         );
 
         add_settings_field(
             'novapress-why-choose-feature-' . $i . '-selector',
-            __('Enable/Disable Feature ' . $i, 'novapress'),
+            $featureSelectorLabel,
             'novapress_render_settings_field',
             'novapress-theme-options',
             'novapress-why-choose-section',
@@ -203,7 +213,7 @@ function novapress_settings_init()
 
         add_settings_field(
             'novapress-why-choose-feature-' . $i . '-icon',
-            __('Choose Feature ' . $i . ' Icon', 'novapress'),
+            $featureIconLabel,
             'novapress_render_settings_field',
             'novapress-theme-options',
             'novapress-why-choose-section',
@@ -211,26 +221,13 @@ function novapress_settings_init()
                 'field'      => 'why_choose_feature_' . $i . '_icon',
                 'class'      => 'novapress-settings-select-field',
                 'type'       => 'select',
-                'options'    => array(
-                    'rocket' => 'Rocket',
-                    'shield' => 'Shield',
-                    'paint-brush' => 'Paint Brush',
-                    'globe'  => 'Globe',
-                    'code'   => 'Code',
-                    'bolt'   => 'Bolt',
-                    'leaf'   => 'Leaf',
-                    'users'  => 'Users',
-                    'check'  => 'Check',
-                    'gears'  => 'Gears',
-                    'heart'  => 'Heart',
-                    'star'   => 'Star'
-                )
+                'options'    => $icon_labels
             )
         );
 
         add_settings_field(
             'novapress-why-choose-feature-' . $i . '-title',
-            __('Enter Feature ' . $i . ' Title', 'novapress'),
+            $featureTitleLabel,
             'novapress_render_settings_field',
             'novapress-theme-options',
             'novapress-why-choose-section',
@@ -243,7 +240,7 @@ function novapress_settings_init()
 
         add_settings_field(
             'novapress-why-choose-feature-' . $i . '-description',
-            __('Enter Feature ' . $i . ' Description', 'novapress'),
+            $featureDescriptionLabel,
             'novapress_render_settings_field',
             'novapress-theme-options',
             'novapress-why-choose-section',
@@ -536,7 +533,10 @@ function novapress_settings_init()
     );
 }
 
-add_action('admin_init', 'novapress_settings_init');
+function novapress_options_render()
+{
+    require_once __DIR__ . '/../../templates/admin/theme-options-page.php';
+}
 
 function novapress_render_section(array $args)
 {
@@ -585,9 +585,4 @@ function novapress_render_settings_field(array $args)
             echo '</div>';
             break;
     }
-}
-
-function novapress_options_render()
-{
-    require_once __DIR__ . '/../../templates/admin/theme-options-page.php';
 }

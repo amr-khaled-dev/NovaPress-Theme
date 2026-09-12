@@ -20,9 +20,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
 
                 mediaFrame = wp.media({
-                    title: 'Select Hero Image',
+                    title: __('Select Hero Image', 'novapress'),
                     button: {
-                        text: 'Use this image',
+                        text: __('Use this image', 'novapress'),
                     },
                     multiple: false,
                 });

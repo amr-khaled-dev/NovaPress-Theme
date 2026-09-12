@@ -12,30 +12,24 @@ $servicesDesc = novapress_get_option('services_description', 'We offer a wide ra
             <p><?php echo esc_html($servicesDesc); ?></p>
         </div>
         <div class="services-grid">
-            <article class="service-card">
-                <div class="service-icon">Icon</div>
-                <h3>Service1</h3>
-                <p>Service1 Description</p>
-                <a href="#" class="btn service-details">Know More</a>
-            </article>
-            <article class="service-card">
-                <div class="service-icon">Icon</div>
-                <h3>Service2</h3>
-                <p>Service2 Description</p>
-                <a href="#" class="btn service-details">Know More</a>
-            </article>
-            <article class="service-card">
-                <div class="service-icon">Icon</div>
-                <h3>Service3</h3>
-                <p>Service3 Description</p>
-                <a href="#" class="btn service-details">Know More</a>
-            </article>
-            <article class="service-card">
-                <div class="service-icon">Icon</div>
-                <h3>Service4</h3>
-                <p>Service4 Description</p>
-                <a href="#" class="btn service-details">Know More</a>
-            </article>
+            <?php
+            $servicesArgs = array(
+                'post_type'      => 'service',
+                'posts_per_page' => 3,
+                'orderby'        => 'date',
+                'order'          => 'DESC',
+            );
+            $servicesQuery = new WP_Query($servicesArgs);
+
+            if ($servicesQuery->have_posts()) :
+                while ($servicesQuery->have_posts()) :
+                    $servicesQuery->the_post();
+                    get_template_part('template-parts/content/content', 'service');
+                endwhile;
+                wp_reset_postdata();
+            endif;
+            ?>
         </div>
+        <a href="<?php echo esc_url(get_post_type_archive_link('service')); ?>">View All Services</a>
     </div>
 </section>

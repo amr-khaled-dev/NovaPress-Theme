@@ -1,3 +1,3 @@
 <?php defined('ABSPATH') || exit; ?>
 
-<p>No posts found.</p>
+<p>No data found.</p>
